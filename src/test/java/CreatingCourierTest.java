@@ -9,16 +9,9 @@ import steps.CourierSteps;
 import static constants.RandomData.*;
 import static constants.Urls.URL;
 
-public class CreatingCourierTest {
+public class CreatingCourierTest extends TestBase {
 
-    CourierSteps courierSteps;
-
-    @BeforeEach
-    public void setUp() {
-        RestAssured.baseURI = URL;
-        courierSteps = new CourierSteps();
-    }
-
+    private CourierSteps courierSteps = new CourierSteps();
 
     @Test
     @DisplayName("Создание нового курьера")
@@ -75,5 +68,4 @@ public class CreatingCourierTest {
         Response responseDelete = courierSteps.deleteCourier(RANDOM_LOGIN, RANDOM_PASSWORD);
         courierSteps.checkAnswerThenValidDeleting(responseDelete);
     }
-
 }

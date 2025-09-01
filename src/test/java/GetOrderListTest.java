@@ -9,12 +9,7 @@ import steps.OrderSteps;
 import static constants.Urls.URL;
 
 
-public class GetOrderListTest {
-
-    @BeforeEach
-    public void setUp() {
-        RestAssured.baseURI = URL;
-    }
+public class GetOrderListTest extends TestBase {
 
     @Test
     @DisplayName("Получение списка заказов")

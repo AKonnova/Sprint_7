@@ -15,12 +15,7 @@ import java.util.List;
 
 import static constants.Urls.URL;
 
-public class CreateOrderTest {
-
-    @BeforeEach
-    public void setUp() {
-        RestAssured.baseURI = URL;
-    }
+public class CreateOrderTest extends TestBase {
 
     @ParameterizedTest
     @MethodSource("orderParam")
@@ -28,10 +23,10 @@ public class CreateOrderTest {
     @Description(value = "Изменение цветов в заказе")
     public void creatingOrderSuccess(String firstName, String lastName, String address, String metroStation, String phone, int rentTime, String deliveryDate, String comment, List<String> color) {
         OrderSteps orderSteps = new OrderSteps();
-        orderSteps.createOrder(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, color);
         Response createOrderResponse = orderSteps.createOrder(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, color);
         orderSteps.checkOrderTrackNotNullNew(createOrderResponse);
     }
+
     static Stream<Arguments> orderParam() {
         return Stream.of(
                 Arguments.of("Алексей", "Петров", "Москва, ул. Тверская, д. 15", "5", "+7 900 123 45 67", 3, "2024-07-15", "Позвонить за час", Arrays.asList("BLACK")),

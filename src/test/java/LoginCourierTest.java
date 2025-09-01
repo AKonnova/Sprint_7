@@ -7,15 +7,14 @@ import org.junit.jupiter.api.Test;
 import steps.CourierSteps;
 
 import static constants.RandomData.*;
-import static constants.Urls.URL;
 
-public class LoginCourierTest {
-    CourierSteps courierSteps;
+public class LoginCourierTest extends TestBase {
+
+    private CourierSteps courierSteps = new CourierSteps();
 
     @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = URL;
-        courierSteps = new CourierSteps();
+        // Создаем курьера перед каждым тестом
         courierSteps.createCourier(RANDOM_LOGIN, RANDOM_PASSWORD, RANDOM_NAME);
     }
 
